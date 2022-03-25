@@ -1,0 +1,71 @@
+<mvc:View
+    controllerName="mar.ab.zordmar.controller.Add"
+    displayBlock="true"
+    height="100%"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page title="Manage Sales Order (New)">
+        <content>
+            <f:SimpleForm editable="true">
+                <f:content>
+                    <Label text="Buyer"></Label>
+                    <Input value="{order>/orderData/BuyerId}" id="idOrder" width="40%" showValueHelp="true"
+                        valueHelpRequest="onCustomerF4"></Input>
+                </f:content>
+            </f:SimpleForm>
+            <Table id="products" items="{order>/orderData/To_Items}">
+                <headerToolbar>
+                    <Toolbar >
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button icon="sap-icon://add" text="Add Row" press="onAddRow"></Button>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <header>
+                            <Text text="Product Id"></Text>
+                        </header>
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Quantity"></Text>
+                        </header>
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Gross Amount"></Text>
+                        </header>
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Note"></Text>
+                        </header>
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Delete"></Text>
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Input value="{order>ProductId}" showValueHelp="true" valueHelpRequest="onProductHelp"></Input>
+                            <Input value="{order>Quantity}"></Input>
+                            <Input value="{order>GrossAmount}"></Input>
+                            <Input value="{order>Note}"></Input>
+                            <Button icon="sap-icon://delete" press="onDelRow" tooltip="Delete Row"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Toolbar >
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="Save" type="Accept" press="onSave"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
